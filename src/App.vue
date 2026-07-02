@@ -40,15 +40,15 @@ function openResolverDirectly() {
   window.open(resolver.url + encodeURIComponent(videoUrl.value.trim()), '_blank')
 }
 
-function closePlayer() {
-  showPlayer.value = false
-  iframeUrl.value = ''
-  isLandscape.value = false
-}
+// function closePlayer() {
+//   showPlayer.value = false
+//   iframeUrl.value = ''
+//   isLandscape.value = false
+// }
 
-function toggleLandscape() {
-  isLandscape.value = !isLandscape.value
-}
+// function toggleLandscape() {
+//   isLandscape.value = !isLandscape.value
+// }
 
 function clearUrl() {
   videoUrl.value = ''
