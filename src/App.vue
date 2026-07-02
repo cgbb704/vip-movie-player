@@ -4,7 +4,7 @@ import { ref } from 'vue'
 const videoUrl = ref('')
 const iframeUrl = ref('')
 const showPlayer = ref(false)
-const isLandscape = ref(false)
+// const isLandscape = ref(false)
 
 const videoSites = [
   { id: 111, name: '爱奇艺', url: 'https://www.iqiyi.com', color: '#E47833' },
