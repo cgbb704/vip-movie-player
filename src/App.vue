@@ -76,7 +76,7 @@ function clearUrl() {
           />
           <!-- 涉及到的知识点是:disabled -->
           <!-- 点击播放按钮时，如果输入框为空，按钮会禁用 -->
-          <el-button type="primary" @click="playVideo" :disabled="!videoUrl.trim()" class="play-btn">
+          <el-button type="primary" @click="openResolverDirectly" :disabled="!videoUrl.trim()" class="play-btn">
             播放视频
           </el-button>
           <el-button @click="clearUrl" class="clear-btn">清空</el-button>
@@ -90,9 +90,9 @@ function clearUrl() {
               {{ resolver.name }}
             </el-radio>
           </el-radio-group>
-          <el-button type="text" @click="openResolverDirectly" :disabled="!videoUrl.trim()">
+          <!-- <el-button type="text" @click="openResolverDirectly" :disabled="!videoUrl.trim()">
             在新窗口打开
-          </el-button>
+          </el-button> -->
         </div>
       </section>
 
@@ -118,10 +118,10 @@ function clearUrl() {
     </main>
 
     <footer class="footer">
-      <p>提示：本案例仅供学习使用，不可作为他用。</p>
+      <p>cgbb制作，请勿用于商业用途</p>
     </footer>
 
-    <div v-if="showPlayer" class="fullscreen-player" :class="{ 'landscape-mode': isLandscape }">
+    <!-- <div v-if="showPlayer" class="fullscreen-player" :class="{ 'landscape-mode': isLandscape }">
       <div class="fullscreen-header">
         <h2>视频播放</h2>
         <div class="header-actions">
@@ -134,7 +134,7 @@ function clearUrl() {
       <div class="fullscreen-iframe" :class="{ 'landscape-iframe': isLandscape }">
         <iframe :src="iframeUrl" class="video-iframe" title="视频播放" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
