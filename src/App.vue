@@ -125,7 +125,7 @@ function clearUrl() {
       <div class="fullscreen-header">
         <h2>视频播放</h2>
         <div class="header-actions">
-          <el-button type="primary" icon="VideoPlay" @click="toggleLandscape" class="landscape-btn">
+          <el-button type="primary"  @click="toggleLandscape" class="landscape-btn">
             {{ isLandscape ? '竖屏' : '横屏' }}
           </el-button>
           <el-button type="danger" @click="closePlayer" class="close-btn">关闭</el-button>
@@ -351,7 +351,7 @@ function clearUrl() {
 }
 
 .landscape-btn {
-  min-width: 80px;
+  width: 80px;
 }
 
 .landscape-mode {
