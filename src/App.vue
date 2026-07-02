@@ -4,6 +4,7 @@ import { ref } from 'vue'
 const videoUrl = ref('')
 const iframeUrl = ref('')
 const showPlayer = ref(false)
+const isLandscape = ref(false)
 
 const videoSites = [
   { id: 111, name: '爱奇艺', url: 'https://www.iqiyi.com', color: '#E47833' },
@@ -42,6 +43,11 @@ function openResolverDirectly() {
 function closePlayer() {
   showPlayer.value = false
   iframeUrl.value = ''
+  isLandscape.value = false
+}
+
+function toggleLandscape() {
+  isLandscape.value = !isLandscape.value
 }
 
 function clearUrl() {
@@ -115,12 +121,17 @@ function clearUrl() {
       <p>提示：本案例仅供学习使用，不可作为他用。</p>
     </footer>
 
-    <div v-if="showPlayer" class="fullscreen-player">
+    <div v-if="showPlayer" class="fullscreen-player" :class="{ 'landscape-mode': isLandscape }">
       <div class="fullscreen-header">
         <h2>视频播放</h2>
-        <el-button type="danger" @click="closePlayer" class="close-btn">关闭</el-button>
+        <div class="header-actions">
+          <el-button type="primary" icon="VideoPlay" @click="toggleLandscape" class="landscape-btn">
+            {{ isLandscape ? '竖屏' : '横屏' }}
+          </el-button>
+          <el-button type="danger" @click="closePlayer" class="close-btn">关闭</el-button>
+        </div>
       </div>
-      <div class="fullscreen-iframe">
+      <div class="fullscreen-iframe" :class="{ 'landscape-iframe': isLandscape }">
         <iframe :src="iframeUrl" class="video-iframe" title="视频播放" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
       </div>
     </div>
@@ -327,6 +338,44 @@ function clearUrl() {
 }
 
 .fullscreen-iframe .video-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.landscape-btn {
+  min-width: 80px;
+}
+
+.landscape-mode {
+  overflow: hidden;
+}
+
+.landscape-mode .fullscreen-header {
+  padding: 10px 20px;
+}
+
+.landscape-mode .fullscreen-header h2 {
+  font-size: 1rem;
+}
+
+.landscape-iframe {
+  position: relative;
+  width: 100vh;
+  height: 100vw;
+  transform: rotate(90deg);
+  transform-origin: center center;
+  margin: auto;
+}
+
+.landscape-iframe .video-iframe {
   position: absolute;
   top: 0;
   left: 0;
